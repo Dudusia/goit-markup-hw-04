@@ -1,16 +1,16 @@
 default:
-  image: bash:devel-alpine3.21
+  image: alpine:latest
 
 stages:
   - bootstrap
 
 bootstrap:
   stage: bootstrap
+  before_script:
+    - apk add --no-cache bash curl jq
   script:
-    - chmod +x $CI_PROJECT_DIR/scripts/bootstrap-github.sh
-    - pwd
-    - ls -la scripts
-    - bash ./scripts/bootstrap-github.sh
+    - chmod +x scripts/bootstrap-github.sh
+    - ./scripts/bootstrap-github.sh
 
 # workflow:
 #   rules:
