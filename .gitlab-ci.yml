@@ -1,5 +1,5 @@
 default:
-  image: alpine:latest
+  image: bash:devel-alpine3.21
 
 stages:
   - bootstrap
