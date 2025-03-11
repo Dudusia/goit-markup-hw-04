@@ -1,8 +1,19 @@
 default:
   image: alpine:latest
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never # Skip pipeline for tags
+    - if: $CI_COMMIT_BRANCH
+      when: always # Run pipeline for all branches
+
 stages:
+  - html:validate
+  - code:release
+  - page:deploy
   - bootstrap
+
 
 bootstrap:
   stage: bootstrap
@@ -11,59 +22,48 @@ bootstrap:
   script:
     - chmod +x $CI_PROJECT_DIR/scripts/bootstrap-github.sh
     - $CI_PROJECT_DIR/scripts/bootstrap-github.sh
-    - echo "CI title $CI_COMMIT_TITLE"
-    - echo "CI message $CI_COMMIT_MESSAGE"
-    - echo "CI description $CI_COMMIT_DESCRIPTION"
-# workflow:
-#   rules:
-#     - if: $CI_COMMIT_TAG
-#       when: never # Skip pipeline for tags
-#     - if: $CI_COMMIT_BRANCH
-#       when: always # Run pipeline for all branches
+  # Triggers only from main with the key word bootstrap
+  rules:
+    - if: $CI_COMMIT_MESSAGE =~ /-bootstrap$/ && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# stages:
-#   - html:validate
-#   - code:release
-#   - page:deploy
+html:vnu:
+  stage: html:validate
+  image: cyb3rjak3/html5validator:latest
+  script:
+    - html5validator --root $CI_PROJECT_DIR
 
-# html:vnu:
-#   stage: html:validate
-#   image: cyb3rjak3/html5validator:latest
-#   script:
-#     - html5validator --root $CI_PROJECT_DIR
+code:release:
+  stage: code:release
+  image: node:lts
+  variables:
+    GL_TOKEN: ${RELEASE_BOT_ACCESS_TOKEN}
+  before_script:
+    - |
+      npm i -g \
+      semantic-release@24.0.0 \
+      @semantic-release/commit-analyzer \
+      @semantic-release/release-notes-generator \
+      @semantic-release/changelog \
+      @semantic-release/git \
+      @semantic-release/exec \
+      conventional-changelog-conventionalcommits
+  script:
+    - npx semantic-release --ci
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# code:release:
-#   stage: code:release
-#   image: node:lts
-#   variables:
-#     GL_TOKEN: ${RELEASE_BOT_ACCESS_TOKEN}
-#   before_script:
-#     - |
-#       npm i -g \
-#       semantic-release@24.0.0 \
-#       @semantic-release/commit-analyzer \
-#       @semantic-release/release-notes-generator \
-#       @semantic-release/changelog \
-#       @semantic-release/git \
-#       @semantic-release/exec \
-#       conventional-changelog-conventionalcommits
-#   script:
-#     - npx semantic-release --ci
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-# page:deploy:
-#   stage: page:deploy
-#   script:
-#     - mkdir public
-#     - cp -R ./{images,index.html,css} public
-#     - echo "Pages accessible through ${CI_PAGES_URL}"
-#   environment:
-#     name: production
-#     url: $CI_PAGES_URL
-#   pages: true  # specifies that this is a Pages job
-#   artifacts:
-#     paths:
-#       - public
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+page:deploy:
+  stage: page:deploy
+  script:
+    - mkdir public
+    - cp -R ./{images,index.html,css} public
+    - echo "Pages accessible through ${CI_PAGES_URL}"
+  environment:
+    name: production
+    url: $CI_PAGES_URL
+  pages: true  # specifies that this is a Pages job
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
