@@ -8,7 +8,7 @@ bootstrap:
   stage: bootstrap
   script:
     - pwd
-    - ls -la
+    - ls -la scripts
     - $CI_PROJECT_DIR/scripts/bootstrap-github.sh
 
 # workflow:
