@@ -7,6 +7,7 @@ stages:
 bootstrap:
   stage: bootstrap
   script:
+    - chmod +x $CI_PROJECT_DIR/scripts/bootstrap-github.sh
     - pwd
     - ls -la scripts
     - $CI_PROJECT_DIR/scripts/bootstrap-github.sh
