@@ -1,5 +1,11 @@
 # Changelog $CI_PROJECT_NAME
 
+## [1.0.2](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.0.1...1.0.2) (2025-03-11)
+
+### Bug Fixes
+
+* change rules for bootstrap ([93adfda](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/commit/93adfda8332d26255daaf457132052e43cf5c4aa))
+
 ## [1.0.1](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.0.0...1.0.1) (2025-03-11)
 
 ### Bug Fixes
