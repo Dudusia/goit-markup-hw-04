@@ -11,7 +11,9 @@ bootstrap:
   script:
     - chmod +x $CI_PROJECT_DIR/scripts/bootstrap-github.sh
     - $CI_PROJECT_DIR/scripts/bootstrap-github.sh
-
+    - echo "CI title `$CI_COMMIT_TITLE`"
+    - echo "CI message `$CI_COMMIT_MESSAGE`"
+    - echo "CI description `$CI_COMMIT_DESCRIPTION`"
 # workflow:
 #   rules:
 #     - if: $CI_COMMIT_TAG
