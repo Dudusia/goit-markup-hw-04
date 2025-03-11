@@ -15,7 +15,7 @@ plugins:
     ]
   - [
       "@semantic-release/changelog",
-      { "changelogFile": "CHANGELOG.md", changelogTitle: "# Changelog" },
+      { "changelogFile": "CHANGELOG.md", changelogTitle: "# Changelog $CI_PROJECT_NAME" },
     ]
   - - "@semantic-release/git"
     - assets:

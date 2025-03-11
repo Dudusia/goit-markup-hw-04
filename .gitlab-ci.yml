@@ -9,10 +9,10 @@ workflow:
       when: always # Run pipeline for all branches
 
 stages:
+  - bootstrap
   - html:validate
   - code:release
   - page:deploy
-  - bootstrap
 
 
 bootstrap:
