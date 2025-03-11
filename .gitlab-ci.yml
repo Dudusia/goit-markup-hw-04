@@ -1,0 +1,10 @@
+default:
+  image: alpine:latest
+
+stages:
+  - bootstrap
+
+bootstrap:
+  stage: bootstrap
+  script:
+   - $CI_PROJECT_DIR/scripts/bootstrap-github.sh
