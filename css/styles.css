@@ -12,13 +12,14 @@
   --cloud: #f4f4fd;
   --cornflower: #e7e9fc;
   --ocean: #404bbf;
+  --light-slate: #8e8f99;
 
   /* Defaults */
   --items-count: '__REPLACE_ME__';
   --item-width: '__REPLACE_ME__';
 
   /* Transitions */
-  --standard-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --standard-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -176,7 +177,7 @@ p {
 .header-item-link {
   padding: 24px 0;
   display: block;
-  transition: var(--standard-transition);
+  transition: color var(--standard-transition);
 }
 
 .header-item-link.current {
@@ -185,8 +186,8 @@ p {
 }
 
 .header-item-link.current::after {
-  content: "";
-  display:inline-block;
+  content: '';
+  display: inline-block;
   position: absolute;
   width: 100%;
   height: 4px;
@@ -220,7 +221,7 @@ p {
 
 .header-address-item-link {
   display: block;
-  transition: var(--standard-transition);
+  transition: color var(--standard-transition);
 }
 .header-address-item-link:hover,
 .header-address-item-link:focus {
@@ -232,12 +233,16 @@ p {
 /* #region Hero */
 .hero {
   padding: 188px 0;
-  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/hero-background.jpg);
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/hero-background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   max-width: 1440px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .hero-title {
@@ -263,7 +268,7 @@ p {
   height: 56px;
   border-radius: 4px;
   margin: 48px auto;
-  transition: var(--standard-transition);
+  transition: background-color var(--standard-transition);
 }
 
 .btn:hover,
@@ -294,6 +299,17 @@ p {
 }
 
 .feature-item {
+}
+
+.feature-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 112px;
+  border-radius: 4px;
+  border: 1px solid var(--light-slate);
+  background: var(--cloud);
+  margin-bottom: 8px;
 }
 
 .feautures-item-icon {
