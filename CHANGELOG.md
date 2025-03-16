@@ -1,5 +1,11 @@
 # Changelog $CI_PROJECT_NAME
 
+## [1.7.0](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.6.0...1.7.0) (2025-03-16)
+
+### Features
+
+* 4th section ([006ae26](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/commit/006ae26e2eed9d3371b3e3001982c6d76dc22796))
+
 ## [1.6.0](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.5.1...1.6.0) (2025-03-16)
 
 ### Features
