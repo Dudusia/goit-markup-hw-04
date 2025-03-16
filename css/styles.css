@@ -136,8 +136,6 @@ p {
   color: var(--navy-blue);
 }
 
-.socials-container {
-}
 .socials {
   display: flex;
   gap: 24px;
