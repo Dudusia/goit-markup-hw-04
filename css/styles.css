@@ -131,6 +131,10 @@ p {
   color: var(--navy-blue);
 }
 
+.socials-icon {
+  background-color: var(--iris);
+  border-radius: 50%;
+}
 /* #endregion */
 
 /* #region Header */
@@ -260,6 +264,12 @@ p {
 }
 
 .feature-item {
+}
+
+.feautures-item-icon {
+  background-color: var(--cloud);
+  width: 64px;
+  height: 64px;
 }
 /* #endregion */
 
