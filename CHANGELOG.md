@@ -1,5 +1,11 @@
 # Changelog $CI_PROJECT_NAME
 
+## [1.5.1](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.5.0...1.5.1) (2025-03-16)
+
+### Bug Fixes
+
+* remove extra div ([c5ec03c](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/commit/c5ec03cfc04e139dd7644293483350a4431de6b1))
+
 ## [1.5.0](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.4.0...1.5.0) (2025-03-16)
 
 ### Features
