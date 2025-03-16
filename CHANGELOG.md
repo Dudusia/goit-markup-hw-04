@@ -1,5 +1,11 @@
 # Changelog $CI_PROJECT_NAME
 
+## [1.1.0](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.0.2...1.1.0) (2025-03-16)
+
+### Features
+
+* just try ([464d2ab](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/commit/464d2ab6b774e34c453cc2d5683c9743f16b3a02))
+
 ## [1.0.2](https://gitlab.com/goit-uni/html-css-fls/goit-markup-hw-04/compare/1.0.1...1.0.2) (2025-03-11)
 
 ### Bug Fixes
